@@ -1,65 +1,305 @@
-import Image from "next/image";
+// "use client"
 
-export default function Home() {
+// import { motion } from "framer-motion"
+// import { useEffect, useState } from "react"
+// import { signInWithGoogle } from "@/lib/auth"
+// import { useRouter } from "next/navigation"
+
+// const quotes = [
+//   "Discipline beats motivation",
+//   "Consistency is your real competition",
+//   "Small steps daily = big results",
+//   "Focus. Execute. Repeat."
+// ]
+
+// export default function LandingPage() {
+//   const [quoteIndex, setQuoteIndex] = useState(0)
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setQuoteIndex((prev) => (prev + 1) % quotes.length)
+//     }, 3000)
+//     return () => clearInterval(interval)
+//   }, [])
+
+// const router = useRouter()
+// const handleLogin = async () => {
+//   const user = await signInWithGoogle()
+//   if (user) {
+//     router.push("/dashboard")
+//   }
+// }
+//   return (
+//     <div className="min-h-screen bg-[#0B0B0B] text-white relative overflow-hidden">
+
+//       {/* 🔥 Background Glow Blobs */}
+//       <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-orange-500/20 blur-[120px] rounded-full"></div>
+//       <div className="absolute bottom-[-100px] right-[-100px] w-[300px] h-[300px] bg-orange-400/10 blur-[120px] rounded-full"></div>
+
+//       {/* NAVBAR */}
+//       <div className="flex justify-between items-center px-6 md:px-12 py-6 relative z-10">
+//         <h1 className="text-2xl font-bold tracking-wide">
+//           <span className="text-[#F97316]">Study</span>Twin
+//         </h1>
+
+//         <button
+//   onClick={handleLogin}
+//   className="flex items-center gap-2 bg-white text-black px-5 py-2 rounded-full"
+// >
+//   <img src="/google.png" className="w-5 h-5" />
+//   Continue with Google
+// </button>
+//       </div>
+
+//       {/* HERO */}
+//       <div className="flex flex-col md:flex-row items-center justify-center px-6 md:px-12 mt-10 md:mt-20 gap-10 md:gap-24 relative z-10">
+
+//         {/* LEFT */}
+//         <div className="flex-1 max-w-lg">
+
+//           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+//             Your Personal{" "}
+//             <span className="text-[#F97316] relative">
+//               Study Twin
+//               <span className="absolute left-0 bottom-0 w-full h-2 bg-orange-500/20 blur-sm"></span>
+//             </span>
+//           </h2>
+
+//           {/* QUOTES */}
+//           <motion.p
+//             key={quoteIndex}
+//             initial={{ opacity: 0, y: 10 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             className="mt-6 text-lg text-gray-400"
+//           >
+//             {quotes[quoteIndex]}
+//           </motion.p>
+
+//           <button className="mt-8 bg-[#F97316] px-6 py-3 rounded-xl font-semibold shadow-lg shadow-orange-500/30 hover:scale-105 transition duration-300">
+//             Start Your Journey
+//           </button>
+//         </div>
+
+//         {/* RIGHT - CARDS */}
+//         <div className="flex-1 max-w-lg grid grid-cols-2 gap-4">
+
+//           {/* Card Common Style */}
+//           {[
+//             {
+//               title: "Today's Tasks",
+//               content: (
+//                 <ul className="text-sm space-y-2">
+//                   <li>✅ Polity</li>
+//                   <li>✅ Algebra</li>
+//                   <li className="text-gray-500">⬜ Thermodynamics</li>
+//                 </ul>
+//               )
+//             },
+//             {
+//               title: "Study Connect",
+//               content: (
+//                 <div className="h-16 bg-gradient-to-br from-orange-500/20 to-transparent rounded-lg flex items-center justify-center text-xs text-gray-400">
+//                   📍 Jaipur Active
+//                 </div>
+//               )
+//             },
+//             {
+//               title: "Weekly Progress",
+//               content: (
+//                 <>
+//                   <div className="h-2 bg-gray-800 rounded">
+//                     <div className="h-2 bg-[#F97316] rounded w-3/4 shadow shadow-orange-500/40"></div>
+//                   </div>
+//                   <p className="text-xs mt-2 text-gray-500">75% completed</p>
+//                 </>
+//               ),
+//               colSpan: "col-span-2"
+//             },
+//             {
+//               title: "Streak",
+//               content: <p className="text-2xl font-bold text-[#F97316]">12 🔥</p>
+//             },
+//             {
+//               title: "Now Studying",
+//               content: (
+//                 <p className="text-sm text-gray-300 mt-2">
+//                   Polity - Parliament
+//                 </p>
+//               )
+//             }
+//           ].map((card, i) => (
+//             <motion.div
+//               key={i}
+//               whileHover={{ scale: 1.05, y: -5 }}
+//               transition={{ type: "spring", stiffness: 200 }}
+//               className={`bg-[#111111]/70 backdrop-blur-xl border border-white/10 p-4 rounded-2xl shadow-lg shadow-orange-500/10 hover:shadow-orange-500/30 transition duration-300 ${card.colSpan || ""}`}
+//             >
+//               <h3 className="text-sm text-gray-400 mb-2">{card.title}</h3>
+//               {card.content}
+//             </motion.div>
+//           ))}
+
+//         </div>
+//       </div>
+
+//     </div>
+
+//   )
+// }
+
+
+
+"use client"
+
+import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
+import { signInWithGoogle } from "@/lib/auth"
+import { useRouter } from "next/navigation"
+
+const quotes = [
+  "Discipline beats motivation",
+  "Consistency is your real competition",
+  "Small steps daily = big results",
+  "Focus. Execute. Repeat."
+]
+
+export default function LandingPage() {
+  const [quoteIndex, setQuoteIndex] = useState(0)
+  const [loading, setLoading] = useState(false)
+  const router = useRouter()
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setQuoteIndex((prev) => (prev + 1) % quotes.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const handleLogin = async () => {
+    try {
+      setLoading(true)
+      const user = await signInWithGoogle()
+      if (user) router.push("/dashboard")
+    } catch (err) {
+      console.error(err)
+      alert("Login failed")
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="min-h-screen bg-[#0B0B0B] text-white relative overflow-hidden">
+
+      {/* Glow */}
+      <div className="absolute top-[-100px] left-[-100px] w-[250px] h-[250px] md:w-[300px] md:h-[300px] bg-orange-500/20 blur-[120px] rounded-full"></div>
+      <div className="absolute bottom-[-100px] right-[-100px] w-[250px] h-[250px] md:w-[300px] md:h-[300px] bg-orange-400/10 blur-[120px] rounded-full"></div>
+
+      {/* NAVBAR */}
+      <div className="flex justify-between items-center px-4 md:px-12 py-4 md:py-6 relative z-10">
+        <h1 className="text-xl md:text-2xl font-bold">
+          <span className="text-[#F97316]">Study</span>Twin
+        </h1>
+
+        <button
+          onClick={handleLogin}
+          disabled={loading}
+          className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full text-sm md:text-base hover:scale-105 transition disabled:opacity-50"
+        >
+          <img src="/google.png" className="w-4 h-4 md:w-5 md:h-5" />
+          {loading ? "Signing in..." : "Google"}
+        </button>
+      </div>
+
+      {/* HERO */}
+      <div className="flex flex-col lg:flex-row items-center justify-between px-4 md:px-12 py-10 md:py-20 gap-12 relative z-10">
+
+        {/* LEFT */}
+        <div className="w-full lg:w-1/2 text-center lg:text-left">
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+            Your Personal{" "}
+            <span className="text-[#F97316] relative">
+              Study Twin
+            </span>
+          </h2>
+
+          <motion.p
+            key={quoteIndex}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-4 md:mt-6 text-base md:text-lg text-gray-400"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            {quotes[quoteIndex]}
+          </motion.p>
+
+          <button
+            onClick={handleLogin}
+            className="mt-6 md:mt-8 bg-[#F97316] px-6 py-3 rounded-xl font-semibold shadow-lg shadow-orange-500/30 hover:scale-105 transition w-full sm:w-auto"
           >
-            Documentation
-          </a>
+            Start Your Journey
+          </button>
         </div>
-      </main>
+
+        {/* RIGHT */}
+        <div className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+          {[
+            {
+              title: "Today's Tasks",
+              content: (
+                <ul className="text-sm space-y-1">
+                  <li>✅ Polity</li>
+                  <li>✅ Algebra</li>
+                  <li className="text-gray-500">⬜ Thermodynamics</li>
+                </ul>
+              )
+            },
+            {
+              title: "Study Connect",
+              content: (
+                <div className="h-16 bg-gradient-to-br from-orange-500/20 to-transparent rounded-lg flex items-center justify-center text-xs text-gray-400">
+                  📍 Active Users Nearby
+                </div>
+              )
+            },
+            {
+              title: "Weekly Progress",
+              content: (
+                <>
+                  <div className="h-2 bg-gray-800 rounded">
+                    <div className="h-2 bg-[#F97316] rounded w-3/4"></div>
+                  </div>
+                  <p className="text-xs mt-2 text-gray-500">75% completed</p>
+                </>
+              ),
+              colSpan: "sm:col-span-2"
+            },
+            {
+              title: "Streak",
+              content: <p className="text-xl font-bold text-[#F97316]">12 🔥</p>
+            },
+            {
+              title: "Now Studying",
+              content: (
+                <p className="text-sm text-gray-300">
+                  Polity - Parliament
+                </p>
+              )
+            }
+          ].map((card, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.04 }}
+              className={`bg-[#111]/70 border border-white/10 p-4 rounded-2xl ${card.colSpan || ""}`}
+            >
+              <h3 className="text-sm text-gray-400 mb-2">{card.title}</h3>
+              {card.content}
+            </motion.div>
+          ))}
+
+        </div>
+      </div>
     </div>
-  );
+  )
 }
