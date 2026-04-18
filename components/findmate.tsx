@@ -362,7 +362,7 @@ return (
   <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
 
     {/* 🗺️ MAP */}
-    <div className="lg:col-span-2 relative h-[60vh] md:h-[70vh] rounded-2xl overflow-hidden border border-white/10">
+    <div className="lg:col-span-2 h-[60vh] md:h-[70vh] rounded-2xl overflow-hidden border border-white/10">
 
       {/* FILTER */}
       <div className=" top-3 left-3 flex gap-2 bg-white/5 p-1 rounded-lg border border-white/10">
